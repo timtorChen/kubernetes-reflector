@@ -4,9 +4,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["ES.Kubernetes.Reflector.Host/ES.Kubernetes.Reflector.Host.csproj", "ES.Kubernetes.Reflector.Host/"]
-RUN dotnet restore "ES.Kubernetes.Reflector.Host/ES.Kubernetes.Reflector.Host.csproj"
 COPY . .
+RUN dotnet restore "ES.Kubernetes.Reflector.Host/ES.Kubernetes.Reflector.Host.csproj"
 WORKDIR "/src/ES.Kubernetes.Reflector.Host"
 RUN dotnet build "ES.Kubernetes.Reflector.Host.csproj" -c Release -o /app/build
 
